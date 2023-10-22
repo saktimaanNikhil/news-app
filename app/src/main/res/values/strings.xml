@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="main_headline">Main heading display here</string>
+    <string name="description">Description</string>
+    <string name="author_name">By Nikhil</string>
+    <string name="published_at">Published At</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_here">Search here...</string>
+</resources>
