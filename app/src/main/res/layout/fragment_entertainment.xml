@@ -23,7 +23,7 @@
         android:padding="2dp" />
 
     <ProgressBar
-        android:id="@+id/homeProgressBarr"
+        android:id="@+id/entertainmentProgressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

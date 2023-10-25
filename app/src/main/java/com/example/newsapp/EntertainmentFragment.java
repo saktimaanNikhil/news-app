@@ -59,7 +59,7 @@ public class EntertainmentFragment extends Fragment {
         modelClassArrayList = new ArrayList<>();
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        progressBar = view.findViewById(R.id.homeProgressBarr);
+        progressBar = view.findViewById(R.id.entertainmentProgressBar);
         backup = new ArrayList<>();
         adapter = new RecyclerNewsAdapter(getContext(), modelClassArrayList);
         recyclerView.setAdapter(adapter);
