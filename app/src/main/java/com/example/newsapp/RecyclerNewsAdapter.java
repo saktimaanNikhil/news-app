@@ -22,6 +22,13 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     Context context;
     ArrayList<ApiModel> modelClassArrayList;
 
+
+
+    public void setfilterData(ArrayList<ApiModel> filterData) {
+        this.modelClassArrayList = filterData;
+        notifyDataSetChanged();
+    }
+
     public RecyclerNewsAdapter(Context context, ArrayList<ApiModel> modelClassArrayList) {
         this.context = context;
         this.modelClassArrayList = modelClassArrayList;
@@ -37,7 +44,7 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerNewsAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).error(R.drawable.baseline_home_24).into(holder.imgNews);
+        Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).error(R.drawable.image).into(holder.imgNews);
         holder.author.setText(modelClassArrayList.get(position).author);
         holder.title.setText(modelClassArrayList.get(position).title);
         holder.description.setText(modelClassArrayList.get(position).description);
@@ -59,6 +66,8 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     public int getItemCount() {
         return modelClassArrayList.size();
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgNews;
