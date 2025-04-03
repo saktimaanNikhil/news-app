@@ -1,5 +1,6 @@
 package com.example.newsapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,19 +22,14 @@ import java.util.ArrayList;
 public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapter.ViewHolder> {
     Context context;
     ArrayList<ApiModel> modelClassArrayList;
-
-
-
     public void setfilterData(ArrayList<ApiModel> filterData) {
         this.modelClassArrayList = filterData;
         notifyDataSetChanged();
     }
-
     public RecyclerNewsAdapter(Context context, ArrayList<ApiModel> modelClassArrayList) {
         this.context = context;
         this.modelClassArrayList = modelClassArrayList;
     }
-
     @NonNull
     @Override
     public RecyclerNewsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,15 +37,14 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-
     @Override
-    public void onBindViewHolder(@NonNull RecyclerNewsAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).error(R.drawable.image).into(holder.imgNews);
+    public void onBindViewHolder(@NonNull RecyclerNewsAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+//        ApiModel model =modelClassArrayList.get(position);
+        Glide.with(context).load(modelClassArrayList.get(position). getUrlToImage()).error(R.drawable.image).into(holder.imgNews);
         holder.author.setText(modelClassArrayList.get(position).author);
         holder.title.setText(modelClassArrayList.get(position).title);
         holder.description.setText(modelClassArrayList.get(position).description);
         holder.time.setText(modelClassArrayList.get(position).publishedAt);
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,17 +53,12 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
                 context.startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return modelClassArrayList.size();
     }
-
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgNews;
         TextView title, description, author, time;

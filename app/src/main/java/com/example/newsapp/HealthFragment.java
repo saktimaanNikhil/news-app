@@ -105,7 +105,7 @@ public class HealthFragment extends Fragment {
 
     private void getApi() {
         Map<String, String> parameters = new HashMap<>();
-        parameters.put("country", "in");
+        parameters.put("country", "us");
         parameters.put("pageSize", "5");
         parameters.put("category", "health");
         parameters.put("apiKey", API_KEY);

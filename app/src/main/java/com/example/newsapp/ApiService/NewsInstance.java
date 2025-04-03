@@ -10,16 +10,11 @@ public class NewsInstance {
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://newsapi.org//v2/";
 
-    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-
-    OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-
 
     NewsInstance() {
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
-                .client(client)
                 .build();
 
     }
@@ -31,8 +26,8 @@ public class NewsInstance {
         return clientObject;
     }
 
+
     public GetDataService getApi() {
         return retrofit.create(GetDataService.class);
     }
-
 }

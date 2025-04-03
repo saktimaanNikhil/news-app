@@ -105,7 +105,7 @@ public class GameFragment extends Fragment {
     }
     private void getApi() {
         Map<String, String> parameters = new HashMap<>();
-        parameters.put("country", "in");
+        parameters.put("country", "us");
         parameters.put("pageSize", "5");
         parameters.put("category", "sports");
         parameters.put("apiKey", API_KEY);

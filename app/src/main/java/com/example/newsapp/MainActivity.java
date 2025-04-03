@@ -7,20 +7,23 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
 
     TabLayout tab;
-    ViewPager viewPager;
+    ViewPager2 viewPager;
     FrameLayout container;
     BottomNavigationView bnView;
 
@@ -33,9 +36,31 @@ public class MainActivity extends AppCompatActivity {
         container = findViewById(R.id.container);
         bnView = findViewById(R.id.bottomNavigation);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+//        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+//        viewPager.setAdapter(adapter);
+//        tab.setupWithViewPager(viewPager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),getLifecycle());
         viewPager.setAdapter(adapter);
-        tab.setupWithViewPager(viewPager);
+        new TabLayoutMediator(tab, viewPager, (tab, position) -> {
+            switch (position) {
+                case 0:
+                    tab.setText("Home");
+                    break;
+                case 1:
+                    tab.setText("Entertainment");
+                    break;
+                case 2:
+                    tab.setText("Game");
+                    break;
+                case 3:
+                    tab.setText("Health");
+                    break;
+                default:
+                    tab.setText("Other");
+                    break;
+            }
+        }).attach();
 
         tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

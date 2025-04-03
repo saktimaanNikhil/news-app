@@ -43,7 +43,6 @@ public class EntertainmentFragment extends Fragment {
 
     private static String API_KEY = "df4461389a174f80aea73def485b5f1c";
 
-
     public EntertainmentFragment() {
         // Required empty public constructor
     }
@@ -122,7 +121,7 @@ public class EntertainmentFragment extends Fragment {
 
     private void getApi() {
         Map<String, String> parameters = new HashMap<>();
-        parameters.put("country", "in");
+        parameters.put("country", "us");
         parameters.put("pageSize", "5");
         parameters.put("category", "entertainment");
         parameters.put("apiKey", API_KEY);
